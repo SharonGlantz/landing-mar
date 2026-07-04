@@ -1,0 +1,421 @@
+/* ============================================
+   Sharon Glantz — Landing MAR
+   Calcado del CSS y layout real de la pagina VSL en Kit
+   (fuentes, colores, variables y estructura del template Alberta)
+   ============================================ */
+
+:root {
+  --heading-font: "Merriweather Sans", sans-serif;
+  --body-font: "Noto Sans", sans-serif;
+
+  --bg: #fcfcfc;
+  --content-bg: #cab0a3;
+  --heading-color: #fcfcfc;
+  --content-text: #fcfcfc;
+
+  --form-bg: #fcfcfc;
+  --form-heading: #412c18;
+  --field-color: #666666;
+  --field-border: #666666;
+
+  --button-bg: #412c18;
+  --button-color: #fcfcfc;
+  --button-radius: 23px;
+
+  --disclaimer-color: #666666;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  font-family: var(--body-font);
+  font-weight: 400;
+  color: #333333;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--content-bg);
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--form-heading);
+  outline-offset: 3px;
+}
+
+/* ---------- Video, contenido (no full-bleed), arriba de todo ---------- */
+
+.video-hero {
+  background: var(--bg);
+  padding: 2rem 1.5rem;
+}
+
+.video-hero-frame {
+  max-width: 640px;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  background: #000000;
+}
+
+.video-hero-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* ---------- Content container (fondo cab0a3, texto blanco) ---------- */
+
+.content-container {
+  background-color: var(--content-bg);
+  padding: 3.5rem 1.5rem;
+}
+
+.content-container .inner {
+  max-width: 620px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Layout a dos columnas: recien a partir de 800px, igual que el .formkit-content-wrapper real */
+.content-container .inner.two-col {
+  max-width: 920px;
+  text-align: left;
+}
+
+@media (min-width: 800px) {
+  .content-container .inner.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+}
+
+.content-container h1 {
+  font-family: var(--heading-font);
+  font-weight: 400;
+  color: var(--heading-color);
+  font-size: calc(36px + (46 - 32) * ((100vw - 400px) / (1150 - 400)));
+  line-height: 1.2;
+  margin: 0;
+}
+
+@media (min-width: 1150px) {
+  .content-container h1 {
+    font-size: 46px;
+  }
+}
+
+.content-container p {
+  color: var(--content-text);
+  font-size: 1rem;
+  margin: 0 auto;
+  max-width: 480px;
+}
+
+@media (min-width: 800px) {
+  .content-container p,
+  .aspirations li {
+    font-size: 18px;
+  }
+}
+
+.two-col p {
+  margin: 0 0 1.1rem;
+  max-width: none;
+}
+
+.aspirations {
+  list-style: none;
+  padding: 0;
+  margin: 1.1rem 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.aspirations li {
+  color: var(--content-text);
+  font-size: 1rem;
+}
+
+.aspirations li::before {
+  content: "• ";
+}
+
+/* ---------- Overlay: video en gris de fondo, form flotando arriba ---------- */
+
+.video-overlay {
+  position: relative;
+  min-height: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  overflow: hidden;
+}
+
+.video-overlay-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.video-overlay-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(0.9) brightness(0.5);
+}
+
+.video-overlay-dim {
+  position: absolute;
+  inset: 0;
+  background: rgba(65, 44, 24, 0.4);
+}
+
+.video-overlay-form {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 400px;
+  background: var(--form-bg);
+  padding: 2.25rem 2rem;
+  box-shadow: 0 20px 44px -16px rgba(0, 0, 0, 0.45);
+}
+
+.video-overlay-form h2 {
+  font-family: var(--heading-font);
+  font-weight: 400;
+  color: var(--form-heading);
+  font-size: calc(18px + (26 - 18) * ((100vw - 400px) / (1150 - 400)));
+  margin: 0 0 24px;
+  text-align: center;
+}
+
+@media (min-width: 600px) {
+  .video-overlay-form h2 {
+    font-size: 25px;
+  }
+}
+
+@media (min-width: 1150px) {
+  .video-overlay-form h2 {
+    font-size: 26px;
+  }
+}
+
+/* ---------- Form container (fondo blanco, encabezado marron) ---------- */
+
+.form-container {
+  background-color: var(--form-bg);
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.form-container .inner {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.form-container h2 {
+  font-family: var(--heading-font);
+  font-weight: 400;
+  color: var(--form-heading);
+  font-size: calc(18px + (26 - 18) * ((100vw - 400px) / (1150 - 400)));
+  margin: 0 0 24px;
+}
+
+@media (min-width: 600px) {
+  .form-container h2 {
+    font-size: 25px;
+  }
+}
+
+@media (min-width: 1150px) {
+  .form-container h2 {
+    font-size: 26px;
+  }
+}
+
+.embed-wrap {
+  overflow: hidden;
+}
+
+.embed-wrap iframe {
+  display: block;
+  width: 100%;
+  border: none;
+}
+
+.disclaimer {
+  color: var(--disclaimer-color);
+  font-size: 16px;
+  margin: 1.25rem 0 0;
+}
+
+/* ---------- Botones (pill, marron, texto blanco) ---------- */
+
+.btn {
+  display: inline-block;
+  font-family: var(--body-font);
+  font-weight: 400;
+  font-size: 15px;
+  color: var(--button-color);
+  background-color: var(--button-bg);
+  border: none;
+  border-radius: var(--button-radius);
+  padding: 0.9rem 2.4rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* ---------- Pasos (fondo blanco, texto gris/marron) ---------- */
+
+.steps {
+  background: var(--bg);
+  padding: 0.5rem 1.5rem 3.5rem;
+}
+
+.steps .inner {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.steps p.label {
+  text-align: center;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--disclaimer-color);
+  margin: 0 0 1.75rem;
+}
+
+.steps ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.4rem;
+}
+
+.steps li {
+  display: grid;
+  grid-template-columns: 2.2rem 1fr;
+  gap: 0.85rem;
+}
+
+.steps .num {
+  font-family: var(--heading-font);
+  color: var(--form-heading);
+}
+
+.steps p {
+  margin: 0;
+  color: #333333;
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+  background: var(--bg);
+  text-align: center;
+  padding: 2rem 1.5rem 2.5rem;
+  font-size: 0.85rem;
+  color: var(--disclaimer-color);
+}
+
+/* ============================================
+   Media query mobile: la misma que ya tenias
+   escrita en el CSS custom de la pagina de Kit
+   ============================================ */
+
+@media (max-width: 768px) {
+
+  h1 {
+    font-size: 24px;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 20px;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 0 10px;
+    text-align: center;
+  }
+
+  .btn, button {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    margin: 12px auto;
+    font-size: 18px;
+    padding: 14px;
+  }
+
+  .container, .section {
+    padding: 20px 10px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Mobile: todo centrado, igual que tu propio override para <768px */
+  .two-col h1,
+  .two-col p,
+  .aspirations {
+    text-align: center;
+  }
+
+  .aspirations li {
+    padding: 0;
+  }
+
+  /* Estas ganan por especificidad sobre la formula fluida del h1/h2 */
+  .content-container h1 {
+    font-size: 24px;
+    line-height: 1.3;
+  }
+
+  .content-container p,
+  .aspirations li {
+    font-size: 16px;
+  }
+
+  .form-container h2,
+  .video-overlay-form h2 {
+    font-size: 20px;
+    line-height: 1.4;
+  }
+
+  .video-overlay {
+    min-height: 340px;
+    padding: 2rem 1.25rem;
+  }
+
+  .video-overlay-form {
+    padding: 1.75rem 1.5rem;
+  }
+
+  .video-hero {
+    padding: 1.5rem 1rem;
+  }
+}
