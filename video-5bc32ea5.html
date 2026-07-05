@@ -8,6 +8,21 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700|Noto+Sans:400,700&display=swap">
 <link rel="stylesheet" href="style.css">
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '951684694343024');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=951684694343024&ev=PageView&noscript=1"
+/></noscript>
 </head>
 <body>
 <main>
@@ -32,7 +47,7 @@
   <section class="form-container">
     <div class="inner">
       <h2>Si estás lista para volver a vos,<br>aplicá en el botón</h2>
-      <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScZiDuJQ9Uqfkk4GED9a6rfI3RsC2Xbae4_HVtWETbZvjMTDA/viewform?usp=dialog">Aplicar</a>
+      <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLScZiDuJQ9Uqfkk4GED9a6rfI3RsC2Xbae4_HVtWETbZvjMTDA/viewform?usp=dialog" onclick="if(typeof fbq==='function'){fbq('track','Lead');}">Aplicar</a>
       <p class="disclaimer">Este botón te lleva a un formulario de aplicación.</p>
     </div>
   </section>
